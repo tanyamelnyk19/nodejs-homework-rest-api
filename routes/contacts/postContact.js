@@ -1,12 +1,9 @@
 import { Router } from 'express';
-import operations from '../../model/contacts';
+import controllers from '../../controllers/contacts';
 import { validateCreate } from '../../middlewares/contacts/validation';
 
 const router = new Router();
 
-router.post('/', validateCreate, async (req, res, next) => {
-    const newContact = await operations.addContact(req.body);
-    res.status(201).json(newContact);
-});
+router.post('/', validateCreate, controllers.addContact);
 
 export default router;

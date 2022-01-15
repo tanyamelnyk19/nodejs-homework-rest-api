@@ -1,11 +1,10 @@
 import { Router } from 'express';
-import operations from '../../model/contacts';
+import controllers from '../../controllers/contacts';
+import { validateQuery } from '../../middlewares/contacts/validation';
 
 const router = new Router();
 
-router.get('/', async (req, res, next) => {
-    const contacts = await operations.listContacts();
-    res.status(200).json(contacts);
-});
+router.get('/', validateQuery, controllers.getContacts);
 
 export default router;
+
