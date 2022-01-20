@@ -1,16 +1,23 @@
 import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
+import helmet from 'helmet';
 import routers from './routes/contacts';
-import { HttpCode } from './lib/constants';
+import usersRouters from './routes/users';
+import { HttpCode, LIMIT_JSON } from './lib/constants';
 
 const app = express();
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
+app.use(helmet());
 app.use(logger(formatsLogger));
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: LIMIT_JSON }));
+
+app.use("/users", usersRouters.registrationRouter);
+app.use("/users", usersRouters.loginRouter);
+app.use("/users", usersRouters.logoutRouter);
 
 app.use("/contacts", routers.deleteRouter);
 app.use("/contacts", routers.getByIdRouter);
