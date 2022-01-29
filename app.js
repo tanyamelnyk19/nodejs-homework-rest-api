@@ -20,6 +20,8 @@ app.use("/users", usersRouters.registrationRouter);
 app.use("/users", usersRouters.loginRouter);
 app.use("/users", usersRouters.logoutRouter);
 app.use("/users", usersRouters.avatarRouter);
+app.use("/users", usersRouters.verifyUserRouter);
+app.use("/users", usersRouters.verifyRouter);
 
 app.use("/contacts", routers.deleteRouter);
 app.use("/contacts", routers.getByIdRouter);

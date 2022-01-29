@@ -3,6 +3,8 @@ import findByEmail from "./findByEmail";
 import create from "./create";
 import updateToken from "./updateToken";
 import updateAvatar from "./updateAvatar";
+import findByVerifyToken from "./findByVerifyToken";
+import updateVerify from "./updateVerify";
 
 export default { 
     findById, 
@@ -10,4 +12,6 @@ export default {
     create, 
     updateToken,
     updateAvatar,
+    findByVerifyToken,
+    updateVerify,
 };
